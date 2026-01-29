@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Heating | Bespoke Heating Specialists</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        [v-cloak] { display: none; }
+        /* Commerce Standard: White Background */
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111111; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Dark Header */
+        .bg-brand-black { background-color: #1a1a1a; }
+        
+        /* Transitions & Hover Effects */
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.8s ease; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; }
+        
+        .btn-primary { transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        
+        .image-hover-zoom { transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .group:hover .image-hover-zoom { transform: scale(1.05); }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+<div id="app" v-cloak>
+    <header class="bg-brand-black border-b border-white/10 sticky top-0 z-50 text-white shadow-lg">
+        <div class="container mx-auto px-8 py-4 flex items-center justify-between">
+            <a href="#" class="flex-shrink-0 group">
+                <div class="text-2xl tracking-[0.25em] font-light uppercase group-hover:opacity-80 transition-opacity">
+                    Best<span class="font-bold">Heating</span>
+                </div>
+                <div class="text-[7px] tracking-[0.5em] text-gray-400 -mt-1 uppercase text-right italic">Bespoke Heating</div>
+            </a>
+
+            <div class="flex-1 max-w-lg mx-12">
+                <div class="relative flex items-center group">
+                    <span class="absolute left-5 text-gray-400 group-focus-within:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </span>
+                    <input type="text" placeholder="Find your perfect radiator..." 
+                           class="w-full bg-white/10 border border-white/10 rounded-full px-12 py-3 text-xs tracking-widest uppercase outline-none focus:bg-white/20 focus:border-white/50 transition-all placeholder-gray-400 text-white">
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <div class="flex space-x-6 items-center border-r border-white/10 pr-6 mr-4">
+                    <button class="flex flex-col items-center group">
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        <span class="text-[8px] uppercase tracking-widest mt-1 text-gray-500 group-hover:text-gray-300">Account</span>
+                    </button>
+                    <button class="flex flex-col items-center group relative">
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span class="absolute top-0 right-1 bg-white text-black text-[9px] font-bold h-3 w-3 flex items-center justify-center rounded-full">0</span>
+                        <span class="text-[8px] uppercase tracking-widest mt-1 text-gray-500 group-hover:text-gray-300">Basket</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bg-brand-black border-t border-white/5">
+            <div class="container mx-auto px-8">
+                <ul class="flex justify-center space-x-12 py-4">
+                    <li v-for="(subcats, cat) in navigation" :key="cat" class="relative group">
+                        <button :class="['text-[11px] font-bold uppercase tracking-[0.25em] pb-1 border-b-2 border-transparent transition-all', cat === 'Sale' ? 'text-red-500 hover:border-red-500' : 'text-gray-300 hover:text-white hover:border-white']" v-text="cat"></button>
+                        <div class="absolute left-1/2 -translate-x-1/2 mt-4 w-60 bg-white text-gray-900 border border-gray-100 shadow-xl py-6 hidden group-hover:block z-50 rounded-sm">
+                            <ul class="space-y-3">
+                                <li v-for="sub in subcats" :key="sub">
+                                    <a href="#" class="block px-8 py-1 text-[10px] uppercase tracking-[0.2em] text-gray-500 hover:text-blue-900 hover:bg-gray-50 transition-colors" v-text="sub"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bg-black text-white py-3 border-b border-gray-800">
+        <div class="container mx-auto px-8">
+            <div class="flex justify-between items-center text-[10px] tracking-[0.15em] font-semibold text-gray-400 uppercase">
+                <div class="flex items-center text-white"><span class="text-green-500 mr-2 text-sm">★★★★★</span> Rated Excellent</div>
+                <div class="flex items-center"><span class="mr-2 text-gray-600">|</span> Next Day Delivery</div>
+                <div class="flex items-center"><span class="mr-2 text-gray-600">|</span> 0% Finance Available</div>
+                <div class="flex items-center"><span class="mr-2 text-gray-600">|</span> 10 Year Guarantee</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="relative h-[500px] overflow-hidden group text-white">
+        <transition-group name="fade">
+            
+            <div v-if="currentSlide === 0" key="slide1" 
+                 class="absolute inset-0 w-full h-full flex items-center justify-center"
+                 style="background: linear-gradient(135deg, #4a1228 0%, #7d2e4d 50%, #4a1228 100%);">
+                <div class="absolute inset-0 z-0 opacity-30 mix-blend-multiply">
+                     <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Texture">
+                </div>
+                <div class="container mx-auto px-12 z-10 grid grid-cols-2 h-full items-center">
+                    <div class="pr-16">
+                        <h2 class="serif text-4xl italic mb-1 text-white/90">Made for</h2>
+                        <h1 class="serif text-6xl uppercase leading-none mb-6 tracking-tight drop-shadow-md">Cosy Living</h1>
+                        <p class="text-white/90 text-sm tracking-widest uppercase font-light leading-relaxed mb-8 border-l-2 border-white/30 pl-4">
+                            200+ RAL Colours. Factory Finished. <br><strong class="text-white">You're</strong> one click from perfection.
+                        </p>
+                        <div class="flex space-x-3 mb-10">
+                            <button v-for="color in ralPreview" :key="color.hex" @click="activeColor = color" 
+                                    :style="{ backgroundColor: color.hex }" 
+                                    :class="['w-8 h-8 rounded-full border transition-all duration-300', activeColor.hex === color.hex ? 'border-white scale-125 ring-2 ring-white/40' : 'border-white/20']">
+                            </button>
+                        </div>
+                        <button class="btn-primary bg-white text-[#5e2b3e] border border-white px-10 py-4 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-gray-100">
+                            Shop <span v-text="activeColor.name"></span>
+                        </button>
+                    </div>
+                    <div class="relative h-full w-full flex items-center justify-center">
+                        <svg viewBox="0 0 200 300" class="h-80 drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] transition-all duration-700" :style="{ fill: activeColor.hex }">
+                            <rect v-for="n in 8" :key="n" :x="30 + (n*16)" y="40" width="10" height="220" rx="3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="currentSlide === 1" key="slide2" 
+                 class="absolute inset-0 w-full h-full flex items-center justify-center"
+                 style="background: linear-gradient(135deg, #132e29 0%, #244f46 50%, #132e29 100%);">
+                <div class="absolute inset-0 z-0 opacity-40 mix-blend-multiply">
+                     <img src="https://images.unsplash.com/photo-1617104424032-b9bd6972d0e4?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Texture">
+                </div>
+                <div class="container mx-auto px-12 z-10 grid grid-cols-2 h-full items-center">
+                    <div class="pr-16">
+                        <h2 class="serif text-4xl italic mb-1 text-white/90">Custom fit</h2>
+                        <h1 class="serif text-6xl uppercase leading-none mb-6 tracking-tight drop-shadow-md">Size Matters</h1>
+                        <p class="text-white/80 text-sm tracking-widest uppercase font-light leading-relaxed mb-8 border-l-2 border-white/30 pl-4">
+                            Radiators built to your exact sizing requirements.<br>Low windows? Narrow walls? <strong class="text-white">We fit.</strong>
+                        </p>
+                        <button class="btn-primary bg-white text-[#132e29] border border-white px-10 py-4 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-gray-100">
+                            Find Your Fit
+                        </button>
+                    </div>
+                    <div class="relative h-full w-full flex items-center justify-center">
+                         <svg viewBox="0 0 300 300" class="h-80 drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] text-white fill-current">
+                            <rect x="50" y="80" width="200" height="140" rx="2" fill="white" fill-opacity="0.1" stroke="white" stroke-width="2"/>
+                            <g stroke="white" stroke-width="1" opacity="0.5">
+                                <line x1="70" y1="80" x2="70" y2="220" />
+                                <line x1="90" y1="80" x2="90" y2="220" />
+                                <line x1="110" y1="80" x2="110" y2="220" />
+                                <line x1="130" y1="80" x2="130" y2="220" />
+                                <line x1="150" y1="80" x2="150" y2="220" />
+                                <line x1="170" y1="80" x2="170" y2="220" />
+                                <line x1="190" y1="80" x2="190" y2="220" />
+                                <line x1="210" y1="80" x2="210" y2="220" />
+                            </g>
+                            <path d="M40 80 L30 80 L30 220 L40 220" fill="none" stroke="white" stroke-width="1.5"/>
+                            <text x="15" y="155" font-family="sans-serif" font-size="10" font-weight="bold" fill="white" transform="rotate(-90 15,155)">HEIGHT</text>
+                            <path d="M50 230 L50 240 L250 240 L250 230" fill="none" stroke="white" stroke-width="1.5"/>
+                            <text x="135" y="255" font-family="sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">WIDTH</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="currentSlide === 2" key="slide3" 
+                 class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden"
+                 style="background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);">
+                
+                <div class="absolute bottom-0 w-full h-12 flex" style="background: repeating-linear-gradient(45deg, #000, #000 20px, #facc15 20px, #facc15 40px);"></div>
+
+                <div class="absolute top-10 right-10 bg-yellow-400 text-black w-32 h-32 rounded-full flex items-center justify-center shadow-2xl animate-bounce z-20 rotate-12 border-4 border-black">
+                    <div class="text-center leading-none">
+                        <span class="block text-[9px] font-bold uppercase tracking-widest">Sale Ends</span>
+                        <span class="block text-xl font-black">2nd</span>
+                        <span class="block text-sm font-bold uppercase">Feb</span>
+                    </div>
+                </div>
+
+                <div class="container mx-auto px-12 z-10 text-center relative">
+                    <h2 class="text-4xl font-black uppercase tracking-widest text-white mb-2 animate-pulse drop-shadow-md">January Sale Now On!</h2>
+                    
+                    <div class="font-black leading-none text-white my-8">
+                        <span class="block text-3xl mb-2 italic text-yellow-300">UP TO</span>
+                        <span class="block text-[180px] leading-[0.8] drop-shadow-[0_15px_0px_rgba(0,0,0,0.3)] transform -skew-x-6">50%</span>
+                        <span class="block text-7xl tracking-[0.2em] mt-4 font-black">OFF</span>
+                    </div>
+
+                    <button class="bg-black text-white px-16 py-6 text-xl font-black uppercase tracking-[0.2em] hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all shadow-[10px_10px_0px_rgba(0,0,0,0.5)] transform -skew-x-12">
+                        <span class="skew-x-[12deg] block">Shop The Sale</span>
+                    </button>
+                </div>
+            </div>
+
+            <div v-if="currentSlide === 3" key="slide4" 
+                 class="absolute inset-0 w-full h-full flex items-center justify-center"
+                 style="background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);">
+                
+                <div class="container mx-auto px-12 z-10 flex flex-col items-center">
+                    
+                    <h2 class="serif text-4xl italic text-white/60 mb-8">Don't miss out</h2>
+                    
+                    <div class="flex space-x-6 mb-12">
+                        <div class="flex flex-col items-center">
+                            <span class="text-6xl font-mono font-bold bg-white/10 px-6 py-4 rounded border border-white/20">04</span>
+                            <span class="text-[9px] uppercase tracking-[0.3em] mt-3 text-gray-500">Days</span>
+                        </div>
+                        <span class="text-4xl font-bold mt-4">:</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-6xl font-mono font-bold bg-white/10 px-6 py-4 rounded border border-white/20">12</span>
+                            <span class="text-[9px] uppercase tracking-[0.3em] mt-3 text-gray-500">Hours</span>
+                        </div>
+                        <span class="text-4xl font-bold mt-4">:</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-6xl font-mono font-bold bg-white/10 px-6 py-4 rounded border border-white/20">45</span>
+                            <span class="text-[9px] uppercase tracking-[0.3em] mt-3 text-gray-500">Mins</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-6 w-full max-w-3xl">
+                        <button class="border border-white/30 py-4 hover:bg-white hover:text-black transition-all uppercase tracking-[0.2em] text-[10px] font-bold">
+                            Shop Radiators
+                        </button>
+                        <button class="border border-white/30 py-4 hover:bg-white hover:text-black transition-all uppercase tracking-[0.2em] text-[10px] font-bold">
+                            Shop Towel Rails
+                        </button>
+                        <button class="border border-white/30 py-4 hover:bg-white hover:text-black transition-all uppercase tracking-[0.2em] text-[10px] font-bold">
+                            Shop Valves
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </transition-group>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+            <button @click="setSlide(0)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 0 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+            <button @click="setSlide(1)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 1 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+            <button @click="setSlide(2)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 2 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+            <button @click="setSlide(3)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 3 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+        </div>
+    </section>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+            <button @click="setSlide(0)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 0 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+            <button @click="setSlide(1)" :class="['w-2 h-2 rounded-full transition-all', currentSlide === 1 ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/60']"></button>
+        </div>
+    </section>
+
+    <main class="bg-white text-gray-900 py-24">
+        <div class="container mx-auto px-12">
+            <div class="flex items-end justify-between mb-16 border-b border-gray-200 pb-8">
+                <div>
+                    <h3 class="serif text-4xl font-bold uppercase tracking-tight text-gray-900">Shop the Collection</h3>
+                    <p class="text-gray-500 text-[9px] tracking-[0.5em] uppercase mt-3 font-medium">Curated for British Homes</p>
+                </div>
+                <a href="#" class="border-b border-gray-300 pb-1 text-[10px] tracking-[0.3em] uppercase hover:text-blue-700 hover:border-blue-700 transition-colors">View All Categories</a>
+            </div>
+
+            <div class="grid grid-cols-4 gap-8">
+                <div v-for="item in collections" :key="item.name" class="group cursor-pointer">
+                    <div class="bg-gray-50 aspect-[3/4] overflow-hidden mb-5 relative border border-gray-100">
+                        <div v-if="item.tag" class="absolute top-0 left-0 bg-black text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest z-20" v-text="item.tag"></div>
+                        
+                        <img :src="item.image" :alt="item.name" class="w-full h-full object-cover image-hover-zoom">
+                        
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 z-10">
+                             <button class="w-full bg-white text-black py-3 text-[10px] font-bold uppercase tracking-widest shadow-lg hover:bg-black hover:text-white transition-colors">Quick View</button>
+                        </div>
+                    </div>
+
+                    <h4 class="serif text-xl mb-1 tracking-tight text-gray-900 group-hover:text-blue-800 transition-colors" v-text="item.name"></h4>
+                    <div class="flex justify-between items-center border-t border-gray-100 pt-3 mt-1">
+                        <p class="text-gray-500 text-[9px] tracking-[0.2em] uppercase font-bold" v-text="item.desc"></p>
+                        <p class="text-black text-[11px] font-bold" v-text="item.price"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    const { createApp } = Vue;
+    createApp({
+        data() {
+            return {
+                currentSlide: 0,
+                autoPlayInterval: null,
+                activeColor: { name: 'Carbon Noir', hex: '#222222' },
+                ralPreview: [
+                    { name: 'Carbon Noir', hex: '#222222' },
+                    { name: 'Evergreen', hex: '#3d473d' },
+                    { name: 'Deep Navy', hex: '#1a2433' },
+                    { name: 'Burned Ochre', hex: '#8a4b38' },
+                    { name: 'Alabaster', hex: '#d9d2c5' }
+                ],
+                navigation: {
+                    'Radiators': ['Column', 'Vertical', 'Cast Iron', 'Horizontal', 'Aluminium'],
+                    'Towel Rails': ['Modern', 'Traditional', 'Electric-Only', 'Dual Fuel'],
+                    'Valves': ['Thermostatic', 'Manual', 'Luxury Kits', 'Sleeving'],
+                    'Accessories': ['Wall Stays', 'Pipe Covers', 'Bleed Valves'],
+                    'Sale': ['Last Chance', 'Clearance Outlet']
+                },
+                collections: [
+                    { 
+                        name: 'Windsor', 
+                        desc: 'Classic Column', 
+                        price: 'From £299', 
+                        tag: 'Best Seller',
+                        image: 'https://cdn.bestheating.com/media/catalog/product/cache/1f8812de34949d65ebdaffa392c2de31/d/r/drtrcchmvl_ls_1000_1.jpg'
+                    },
+                    { 
+                        name: 'Alpha', 
+                        desc: 'Modern Panel', 
+                        price: 'From £200', 
+                        tag: null,
+                        image: 'https://cdn.bestheating.com/media/catalog/product/cache/1f8812de34949d65ebdaffa392c2de31/d/r/drahsp25_flifestyle_1000_1.jpg'
+                    },
+                    { 
+                        name: 'Aruba', 
+                        desc: 'Vertical Designer', 
+                        price: 'From £249', 
+                        tag: 'Trending',
+                        image: 'https://cdn.bestheating.com/media/catalog/product/cache/1f8812de34949d65ebdaffa392c2de31/d/r/draracvmvl_ls_1000_1_new25.jpg'
+                    },
+                    { 
+                        name: 'Cast Iron', 
+                        desc: 'Traditional', 
+                        price: 'From £350', 
+                        tag: null,
+                        image: 'https://cdn.bestheating.com/media/catalog/product/cache/1f8812de34949d65ebdaffa392c2de31/c/i/ci3cmnb660101_ls_ml_1000_1_1_24.jpg'
+                    }
+                ]
+            }
+        },
+        mounted() {
+            this.startAutoPlay();
+        },
+        methods: {
+            setSlide(index) {
+                this.currentSlide = index;
+                this.resetAutoPlay();
+            },
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % 4; 
+            },
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(this.nextSlide, 5000); 
+            },
+            resetAutoPlay() {
+                clearInterval(this.autoPlayInterval);
+                this.startAutoPlay();
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
