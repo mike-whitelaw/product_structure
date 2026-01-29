@@ -1,0 +1,43 @@
+PROBLEM 1: Attributes are unstructured and disconnected from reporting logic, granular analysis of performance becomes impossible. Its why no one in the business looks at anything other than high level figures. 
+PROBLEM 2: Taxonomical Product Categorisation is none existent, instead categories are polluted with attribute data. The Category contains "Feature" info (Style, Orientation, Fuel Type).
+PROBLEM 3: Subcategories are duplicated across parent categories, again contain features. New features cause exponential growth in subcategories which makes tracking sales performance at feature level impossible. 
+PROBLEM 4: Range is just a text tag, it means nothing, there is no supporting data structure, there are duplicates, misspellings etc in our Range list, how do we decide what to keep and what to bin, this combined with the categorisation issue leads to data driven range pruning being so much harder than it has to be?
+The Core Problem: "Attribute Pollution"
+The crux of the issue is that our current reporting structure is brittle because we have baked product attributes (Descriptors) into our taxonomy (Definition).
+Designer Radiator 
+Electric Designer Radiator as category. 
+Vertical Electric Designer Radiator. 
+2. The Solution: A Product-Centric Dimensional Model
+My proposal is that we shift to a defined product data model.
+•	Taxonomy (The Skeleton): Defines strictly what the product is (e.g., "Radiator").
+•	Attributes (The Tags): Defines what features it has (e.g., "Vertical," "Anthracite").
+•	Range (The Strategy): Defines the product strategy, target demographic and grouping of products across their taxonomic definitions by way of visual DNA / Styling (e.g., "Aruba Collection (Rads, HTR, Compatible Valves and Feet").
+•	Top level Categories need to be Nouns: - Radiator, Bath, Towel Rail
+•	Sub categories need to be mutually exclusive differentiators. You can’t have a Column Radiator that Is a Panel Radiator. So subcat Column and Panel. 
+•	Can you have an Electric Radiator that is Column and Panel? Yes – Electric is an attribute. 
+
+Benefits
+Global "Feature" Demand "Electric" is split across 5 different categories (Towel Rails, Radiators, Valves).
+How does Electric Heating Compare to Hot Water Heating – Easy sum everything with the Electric Attribute.)
+True Range Valuation: You can see what works in a Range and what doesn’t. Easy to set up performance and inventory monitoring. It allows us to monitor at a granular level what is and isn’t working within a range and lets us assess why? Windsor flat YoY, well actually Column rads are up 20% but no one is buying the Towel Rails, do we replace or rebrand. It baically allows us to decide if something within a range is working, does it need a rebrand etc (more on this in a sec)
+Promos: We can get surgical with our promos. Instead of Range Wide Promos, we can Discount Aruba Verticals – “Stand Up For Aruba, 50% off Aruba Ayre Vertical Radiators this week only” is easy. 
+Data Driven Everything
+Dynamic Pricing Strategy
+•	The Decision: Where can we increase prices without hurting conversion?
+•	The Data Driver: We might see that while "Radiator" sales are flat, the attribute Orientation: Vertical + Finish: Antique Brass is price inelastic and is growing 20% YoY. 
+•	Action: We can safely increase margin on that specific attribute combination because the data proves it is high-demand/low-sensitivity so we test the water with incremental price increases.
+Range Families?
+•	Data Driver: We the Range to group products into Visual Families (e.g., "Oval Tube"), the comparison to see we have 12 ranges that look identical becomes clear of day. We can easily see which ones sell and which ones don’t.
+•	Action: Merge or kill the losers, keep the winners, reducing inventory holding costs and simplifying the customer journey.
+Why is it worth it?
+1.	Commercial Agility: We stop guessing which "trends" are working. We can isolate specific features (Gold, Electric, Column) and double down on them to drive growth.
+2.	Operational Efficiency: We stop warehousing  functionally identical and visually indistinguishable duplicate products hiding under different range names and categories and free up the head space for new product launches which we can integrate, track and learn from. Key to developing long term growth strategy and knowing what works. 
+3.	Reporting Sanity: The "mess" goes away. Reporting become automated, accurate, and multi-dimensional. Reduces administrative burden across departments. People can focus on doing their job. Don’t need a degree in statistical modelling to figure out how a range is performing. 
+4.	Backwards compatible, we don’t just get the benefit going forward, use the sku to map this back and we get rich historical data to learn from. 
+How Long Will it Take 
+Approximately 1 week MW to clean all the product data and bucket into logical groupings in a database. 
+Range Consolidation project requires Director input to draft the framework. Where do we draw the line on margin. Do we need to add logic to the kill process. Then its an ongoing iterative process that we look at regularly to streamline our offering. 
+
+ 
+
+ 
